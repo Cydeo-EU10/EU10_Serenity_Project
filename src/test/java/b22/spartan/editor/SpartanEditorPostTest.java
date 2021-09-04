@@ -1,5 +1,7 @@
 package b22.spartan.editor;
 
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
 import utilities.SpartanNewBase;
 import io.restassured.http.ContentType;
 import net.serenitybdd.junit5.SerenityTest;
@@ -86,6 +88,17 @@ public class SpartanEditorPostTest extends SpartanNewBase {
             Ensure.that("check location header ends with newly generated id",
                             vR -> vR.header("Location",endsWith(id))
                     );
+
+        }
+
+        @ParameterizedTest
+        @CsvFileSource(resources = "/SpartanData.csv",numLinesToSkip = 1)
+        public void postSpartanWithCSV(String name,String gender,long phone){
+
+            System.out.println("name = " + name);
+            System.out.println("gender = " + gender);
+            System.out.println("phone = " + phone);
+
 
         }
 
