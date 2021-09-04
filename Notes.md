@@ -86,5 +86,21 @@ Here is the [link](https://serenity-bdd.github.io/theserenitybook/latest/index.h
     </build>
 ```
 5.Create a package called `b22` under `src/test/java`
-    1. under b22 create `spartan` and under spartan create `admin` packages
-    2.create a class called `SpartanAdminGetTest`
+1. under b22 create `spartan` and under spartan create `admin` packages
+   
+2. create a class called `SpartanAdminGetTest`
+
+6.Create regular @Test rest api class `getAllSpartan` and send a request.
+
+7.This is just regular test, in order to make it recognized by serenity reports
+* add annotation class level : `@SerenityTest`
+* it is coming from `import net.serenitybdd.junit5.SerenityTest;
+  `
+  
+8. Add a properties file with exact name `serenity.properties`
+  right under project level
+  * add following lines to properties file 
+```properties
+serenity.project.name=B22 API Report
+serenity.test.root=b22
+```
