@@ -123,3 +123,15 @@ serenity.test.root=b22
     * Instead of importing rest assured `given` import,use below
         * `import static net.serenitybdd.rest.SerenityRest.given;`
     * From this point on, all details will be picked up by Serenity report, you will see **Rest Query** button on the individual tests
+
+12. The way that assert the response and show it as a steps in Serenity report is using `Ensure` class (from `import net.serenitybdd.rest.Ensure;`)
+```java
+        Ensure.that("Status code is 200",validatableResponse -> validatableResponse.statusCode(201) );
+
+        Ensure.that("Content-type is JSON",vRes -> vRes.contentType(ContentType.JSON));
+
+        Ensure.that("Id is 15", vRes -> vRes.body("id",is(15)));
+
+```
+
+
