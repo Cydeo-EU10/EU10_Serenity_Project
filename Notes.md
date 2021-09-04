@@ -118,3 +118,8 @@ serenity.test.root=b22
     <version>1.7.30</version>
 </dependency>
 ```
+11. We were able to generate test report, however there are no details about the request and response.
+    In order to see the details then we need to use the `given() when() then()` methods coming from Serenity.
+    * Instead of importing rest assured `given` import,use below
+        * `import static net.serenitybdd.rest.SerenityRest.given;`
+    * From this point on, all details will be picked up by Serenity report, you will see **Rest Query** button on the individual tests
