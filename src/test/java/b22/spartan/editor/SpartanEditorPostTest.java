@@ -1,5 +1,6 @@
 package b22.spartan.editor;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import utilities.SpartanNewBase;
@@ -22,6 +23,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static net.serenitybdd.rest.SerenityRest.given;
 
+@Disabled
 @SerenityTest
 public class SpartanEditorPostTest extends SpartanNewBase {
 
