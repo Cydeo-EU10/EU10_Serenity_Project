@@ -25,16 +25,24 @@ public class SpartanEditorPostTest extends SpartanNewBase {
         @DisplayName("Editor should be able to POST")
         @Test
         public void postSpartanAsEditor(){
+
+            //when you need deserialize or serialize, you dont need to add separate dependency, it comes
+            //with serenity
             //create one spartan using util
             Map<String,Object> bodyMap = SpartanUtil.getRandomSpartanMap();
 
             System.out.println("bodyMap = " + bodyMap);
 
             //send a post request as editor
-
-
-
-
+            given()
+                    .auth().basic("editor","editor")
+                    .accept(ContentType.JSON)
+                    .contentType(ContentType.JSON)
+                    .body(bodyMap)
+                    .log().body()
+            .when()
+                    .post("/spartans")
+                    .prettyPrint();
         }
 
 }
