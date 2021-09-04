@@ -42,7 +42,19 @@ public class SpartanEditorPostTest extends SpartanNewBase {
                     .log().body()
             .when()
                     .post("/spartans")
-                    .prettyPrint();
+                    .then().log().all();
+
+             /*
+                status code is 201
+                content type is Json
+                success message is A Spartan is Born!
+                id is not null
+                name is correct
+                gender is correct
+                phone is correct
+
+                check location header ends with newly generated id
+         */
         }
 
 }
