@@ -104,3 +104,17 @@ Here is the [link](https://serenity-bdd.github.io/theserenitybook/latest/index.h
 serenity.project.name=B22 API Report
 serenity.test.root=b22
 ```
+9.In order to generate serenity report, we need to use maven goal
+* if you are using command line: `mvn clean verify`  cmd+enter or ctrl+enter if you dont have maven installed locally
+* if you are using IntelliJ buttons; 
+    * first click on clean then click on verify
+* your report will be generated under target as HTML Report
+
+10.Thi sis for serenity to pick up log and eliminate the warning
+```xml
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-simple</artifactId>
+    <version>1.7.30</version>
+</dependency>
+```
