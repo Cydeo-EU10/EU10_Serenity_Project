@@ -19,7 +19,7 @@ public class SpartanNewBase {
     @BeforeAll
     public static void init(){
         //save baseurl inside this variable so that we dont need to type each http method.
-        baseURI = "http://54.92.248.102";
+        baseURI = "http://44.195.19.167";
         port = 7000;
         basePath ="/api";
 
