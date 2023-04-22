@@ -1,30 +1,25 @@
 package b22.spartan.admin;
 
-import io.restassured.http.ContentType;
-import net.serenitybdd.junit5.SerenityTest;
-import net.serenitybdd.rest.Ensure;
-import net.serenitybdd.rest.SerenityRest;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import io.restassured.http.*;
+import net.serenitybdd.junit5.*;
+import net.serenitybdd.rest.*;
+import org.junit.jupiter.api.*;
 
-import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.*;
-import static net.serenitybdd.rest.SerenityRest.lastResponse;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
 import static net.serenitybdd.rest.SerenityRest.given;
-@Disabled
+import static net.serenitybdd.rest.SerenityRest.*;
+import static org.hamcrest.Matchers.*;
+
+//@Disabled
 @SerenityTest
 public class SpartanAdminGetTest {
 
     @BeforeAll
-    public static void init(){
-        //save baseurl inside this variable so that we dont need to type each http method.
-        baseURI = "http://44.195.19.167:7000";
-
+    public static void setUpBase() {
+        baseURI = "http://3.216.30.92:7000";
     }
+
+
 
     @Test
     public void getAllSpartan(){
@@ -38,13 +33,14 @@ public class SpartanAdminGetTest {
         .then()
                 .statusCode(200)
                 .and()
-                .contentType(ContentType.JSON);
+                .contentType(ContentType.JSON)
+                .extract().response();
     }
 
     @Test
     public void getOneSpartan(){
 
-            given()
+        given()
                 .accept(ContentType.JSON)
                 .and()
                 .auth().basic("admin","admin")
@@ -55,7 +51,7 @@ public class SpartanAdminGetTest {
         //if you send a request using SerenityRest, the response object
         //can be obtained from the method called lastResponse() without being saved separately
         //same with Response response object
-        System.out.println("Status code = " + lastResponse().statusCode());
+        System.out.println("Status code = " + SerenityRest.lastResponse().statusCode());
 
         //print id
         //instead of response.path, we use lastResponse.path()
@@ -81,11 +77,12 @@ public class SpartanAdminGetTest {
 
         //Serenity way of assertion
 
-        Ensure.that("Status code is 200",validatableResponse -> validatableResponse.statusCode(201) );
+        Ensure.that("Status code is 200",validatableResponse -> validatableResponse.statusCode(200) );
 
         Ensure.that("Content-type is JSON",vRes -> vRes.contentType(ContentType.JSON));
 
         Ensure.that("Id is 15", vRes -> vRes.body("id",is(15)));
+
 
 
 
